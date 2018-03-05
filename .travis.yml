@@ -7,7 +7,7 @@ install:
   - sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-6 90
 script:
   - gcc --version
-  - g++ --vesion
+  - g++ --version
   - cmake --version
   - cmake .
   - cmake --build .
