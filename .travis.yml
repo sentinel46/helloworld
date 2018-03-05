@@ -1,16 +1,19 @@
 language: cpp
 before_script:
-  - sudo apt-get -qq update
-  - sudo apt-get install gcc cmake libboost-test-dev -y
-  - gcc --version
-  - cmake --version
+- sudo apt-get -qq update
+- sudo apt-get install g++-6 cmake libboost-test-dev -y
 script:
-  - cmake .
-  - cmake --build .
-  - cmake --build . --target test
-  - cmake --build . --target package
+- gcc --version
+- cmake --version
+- cmake .
+- cmake --build .
+- cmake --build . --target test
+- cmake --build . --target package
 deploy:
   provider: script
   skip_cleanup: true
   script:
-  - curl -T helloworld-0.0.$TRAVIS_BUILD_NUMBER-Linux.deb -usentinel46:$BINTRAY_API_KEY "https://api.bintray.com/content/sentinel46/cpp-otus/helloworld/$TRAVIS_BUILD_NUMBER/helloworld-0.0.$TRAVIS_BUILD_NUMBER-Linux.deb;deb_distribution=trusty;deb_component=main;deb_architecture=amd64;publish=1"
+  - curl -T helloworld-0.0.$TRAVIS_BUILD_NUMBER-Linux.deb -usentinel46:$BINTRAY_API_KEY
+    "https://api.bintray.com/content/sentinel46/cpp-otus/helloworld/$TRAVIS_BUILD_NUMBER/helloworld-0.0.$TRAVIS_BUILD_NUMBER-Linux.deb;deb_distribution=trusty;deb_component=main;deb_architecture=amd64;publish=1"
+  key:
+    secure: CuxX2TS7VpUMrANqgpRCxltEbxuqiUIQtfvFQqKk1wAzsc3yzGfhbFfJTECg7/eI3MsA570tNYNijA/q0d1Damgv+uCwGB5UBinb/1DANf9wA0BxOAVOePtqtGe0BF7BUXWUcNpzVVbULIIGVGaOeC62NyV1bl68OqLgxJ7xT7Y3QClTfUg+HPD1acgzVh8t6VsQE41nN3g50hVX+Y8Cl40vodTgPxzcLHPulplU8GLvz9eSrzR8nouV3VRpOzmT3QADTkdHVgDan9JFh5QDHsFcDMsOy0ts5jGeY0on6mgKz5lLE0vkfXhP7KFRkyjvftPWBNmiRu3KAS2aMYSal2A/OXTEcWLKJBXeLbqz6G9GW3QmVEOJf+vAkXMh+HMpBdrWfnbCc5/S5SPDDxNd2FjO+ov3DtfLItDFiwZMhmpcVDi2zNrG4umozTlOrZuMeMJB0N+d+Wv5wn5ED7s5GmMTfk4wdZEjLm+wbX6iiCWRd+/1OZvq3EKrcXPj6hZcMYsA4ACkEr4p+/CeeK27FW/iGO4mfZag423HFSlRHr2sCVP7mWKR0W2W9s2p8ZFJaOKYmCGozpj6Uq7gmZ8JnVB7o6Eiw0K7DdofzjYnlroariPffase+JXTz9RykcETHg7gxZHd0IInuaK5XXJwMjrNo4ApqCyTzK+5+xafQoY=
