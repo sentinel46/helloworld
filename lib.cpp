@@ -1,7 +1,7 @@
 #include "lib.h"
 #include "version.h"
 
-int version()
+std::tuple<int, int, int> version()
 {
-    return PROJECT_VERSION_PATCH;
+    return std::make_tuple(PROJECT_VERSION_MAJOR, PROJECT_VERSION_MINOR, PROJECT_VERSION_PATCH);
 }

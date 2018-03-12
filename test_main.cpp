@@ -8,7 +8,13 @@ BOOST_AUTO_TEST_SUITE(test_suite_main)
 
 BOOST_AUTO_TEST_CASE(test_version_valid)
 {
-    BOOST_CHECK( version() > 0 );
+    int major = 0;
+    int minor = 0;
+    int patch = 0;
+    std::tie(major, minor, patch) = version();
+    BOOST_CHECK( major >= 0 );
+    BOOST_CHECK( minor >= 0 );
+    BOOST_CHECK( patch > 0 );
 }
 
 BOOST_AUTO_TEST_SUITE_END()

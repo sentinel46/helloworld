@@ -1,3 +1,5 @@
 #pragma once
 
-int version();
+#include <tuple>
+
+std::tuple<int, int, int> version();
