@@ -8,7 +8,7 @@ if($ENV{TRAVIS_BUILD_NUMBER})
 endif()
 project(helloworld VERSION ${VER})
 
-find_package(Boost COMPONENTS unit_test_framework REQUIRED)
+find_package(Boost COMPONENTS program_options unit_test_framework REQUIRED)
 
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
@@ -29,7 +29,9 @@ set_target_properties(test_${PROJECT_NAME} PROPERTIES
     COMPILE_DEFINITIONS BOOST_TEST_DYN_LINK
     INCLUDE_DIRECTORIES ${Boost_INCLUDE_DIR})
 
-target_link_libraries(${PROJECT_NAME} lib)
+target_link_libraries(${PROJECT_NAME}
+    ${Boost_LIBRARIES}
+    lib)
 
 target_link_libraries(test_${PROJECT_NAME}
     ${Boost_LIBRARIES}
